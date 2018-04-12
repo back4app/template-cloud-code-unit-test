@@ -3,7 +3,7 @@
 var Parse = require('parse/node');
 var constants = require("./constants");
 // head over to your Parse dash board for your test server, and grab your keys. Swap out the strings with the place holders below
-Parse.initialize(constants.APPLICATION_KEY, null, constants.MASTER_KEY);
+Parse.initialize(constants.APPLICATION_ID, null, constants.MASTER_KEY);
 // if you are running a localhost Parse server, set the serverUrl accordingly
 Parse.serverURL = 'https://parseapi.back4app.com'
 var signupUser = require("../cloud/cloud-functions").SignupUser(Parse);
@@ -29,32 +29,9 @@ describe("SignupUser", ()=> {
   });
 
   it ("should signup a User, and also create a Profile that contains a reference to the user", (done) => {
-      var responseStub = new ResponseStub();
-      var stub = responseStub.getStub();
-      responseStub.onComplete()
-      .then((resp) => {
-        var profileQ =  new Parse.Query("Profile");
-        profileQ.equalTo("lastname", "Smith");
-        return profileQ.find({useMasterKey : true});
-      })
-      // Check to make sure the profile we retrieve is valid
-      .then((profiles) => {
-        if (profiles.length === 0) throw new Error("No profile's found");
-        expect(profiles[0].get('firstname')).toBe("John");
-        // get the corresponding user
-        return profiles[0].get("user").fetch({useMasterKey : true})
-      })
-      // Check to make sure the user is what we expect
-      .then((user) => {
-        expect(user.getUsername()).toBe("jsmith1");
-      })
-      .catch((e) => {
-        console.log(e)
-        fail(e);
-      })
-      .then(() => done());
-
-      signupUser({
+    var responseStub = new ResponseStub();
+    var stub = responseStub.getStub();
+    signupUser({
         params : {
           firstname : "John",
           lastname : "Smith",
@@ -65,6 +42,27 @@ describe("SignupUser", ()=> {
       },
       stub
     );
-
+    responseStub.onComplete()
+    .then((resp) => {
+      var profileQ =  new Parse.Query("Profile");
+      profileQ.equalTo("lastname", "Smith");
+      return profileQ.find({useMasterKey : true});
     })
+    // Check to make sure the profile we retrieve is valid
+    .then((profiles) => {
+      if (profiles.length === 0) throw new Error("No profile's found");
+      expect(profiles[0].get('firstname')).toBe("John");
+      // get the corresponding user
+      return profiles[0].get("user").fetch({useMasterKey : true})
+    })
+    // Check to make sure the user is what we expect
+    .then((user) => {
+      expect(user.getUsername()).toBe("jsmith1");
+    })
+    .catch((e) => {
+      console.log(e)
+      fail(e);
+    })
+    .then(() => done());
+  })
 });

@@ -17,7 +17,7 @@ npm install
 2. Select the **test** application
 3. Click 'App Settings' on the left hand side, and then select 'Security and Keys'
 
-* Open up the file spec/constants.js, and paste in your master and application keys FROM YOUR TEST SERVER!
+* Open up the file spec/constants.js, and paste in your master key and application id FROM YOUR TEST SERVER!
 
 * Run the tests:
 ```
