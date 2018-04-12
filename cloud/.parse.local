@@ -1,0 +1,10 @@
+{
+  "applications": {
+    "Automated Test App": {
+      "applicationId": "DAbv2S7sqrAndIJ5TJfnO3pSpX2UF2nFs6embhkW"
+    },
+    "_default": {
+      "link": "Automated Test App"
+    }
+  }
+}
