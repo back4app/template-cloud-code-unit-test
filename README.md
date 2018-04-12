@@ -13,9 +13,9 @@ npm install
 * - This will be used to run tests without corrupting live production data
 
 * Grab your keys from the Parse Dashboard
-1. Go to your Parse Dashboard
-2. Select the **test** application
-3. Click 'App Settings' on the left hand side, and then select 'Security and Keys'
+..1. Go to your Parse Dashboard
+..2. Select the **test** application
+..3. Click 'App Settings' on the left hand side, and then select 'Security and Keys'
 
 * Open up the file spec/constants.js, and paste in your master and application keys FROM YOUR TEST SERVER!
 
