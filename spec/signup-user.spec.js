@@ -1,9 +1,10 @@
 
 // Hook into your testing server
 var Parse = require('parse/node');
+var constants = require("./constants");
 // head over to your Parse dash board for your test server, and grab your keys. Swap out the strings with the place holders below
-Parse.initialize(YOUR_PARSE_TEST_SERVER_APPLICATION_KEY, null, YOUR_PARSE_TEST_SERVER_MASTER_KEY);
-// if you are running a localhost Parse server, set the serverUrl accordingly 
+Parse.initialize(constants.APPLICATION_KEY, null, constants.MASTER_KEY);
+// if you are running a localhost Parse server, set the serverUrl accordingly
 Parse.serverURL = 'https://parseapi.back4app.com'
 var signupUser = require("../cloud/cloud-functions").SignupUser(Parse);
 var purgeTable = require("./utils/purge-parse-table")(Parse);
