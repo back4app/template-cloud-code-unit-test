@@ -1,0 +1,35 @@
+{
+  "name": "b4a-cloud-code-test-example",
+  "version": "1.0.0",
+  "description": "Parse Server Cloud testing Jasmine Automated Testing",
+  "main": "index.js",
+  "dependencies": {
+    "events": "^2.0.0",
+    "jasmine": "^3.1.0",
+    "jasmine-node": "^1.14.5",
+    "parse": "^1.11.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "./node_modules/jasmine/bin/jasmine.js spec/signup-user.spec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/considine/b4a-cloud-code-test-example.git"
+  },
+  "keywords": [
+    "Parse",
+    "Server",
+    "Cloud",
+    "testing",
+    "Jasmine",
+    "Automated",
+    "Testing"
+  ],
+  "author": "Jack Considine <jackconsidine3@gmail.com> (jackconsidine.wordpress.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/considine/b4a-cloud-code-test-example/issues"
+  },
+  "homepage": "https://github.com/considine/b4a-cloud-code-test-example#readme"
+}
